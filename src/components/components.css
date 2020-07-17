@@ -6,4 +6,55 @@
 .navbar {
   margin-right: 10px;
   margin-left: 10px;
+  font-size: 30px;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+}
+input,
+select {
+  margin-right: 100px;
+}
+
+.container {
+  display: flex;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: lightblue;
+  list-style: none;
+  margin: 5px;
+  color: black;
+}
+
+.app {
+  text-align: center;
+}
+
+tbody {
+  text-align: center;
+}
+
+.header {
+  background-color: #282c34;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.basket .list-item {
+  background: lightblue;
+}
+
+.basket .list-item:nth-child(even) {
+  background: lightcyan;
 }

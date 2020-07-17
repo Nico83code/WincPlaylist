@@ -1,22 +1,9 @@
 import React from "react";
+import "./components.css";
 
 function Song(props) {
-  const baseUrl = "https://playlist-84d33.firebaseio.com";
-  const removeData = async (hashId) => {
-    try {
-      const apiUrl = `${baseUrl}/playlist/${hashId}.json`;
-      let response = await fetch(apiUrl, { method: "DELETE" });
-      const result = await response.json();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleDelete = (event) => {
-    console.log("sumbited");
-  };
   return (
-    <div>
+    <div className="list-item">
       <table>
         <tbody>
           <tr>
@@ -25,7 +12,9 @@ function Song(props) {
             <td>{props.genre}</td>
             <td>{props.rating}</td>
             <td>
-              <button onClick={handleDelete}>delete</button>
+              <button onClick={(event) => props.handleDelete(props.id)}>
+                delete
+              </button>
             </td>
           </tr>
         </tbody>

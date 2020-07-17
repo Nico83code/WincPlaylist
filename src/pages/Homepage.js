@@ -5,8 +5,8 @@ import Container from "../components/Container";
 
 function Homepage() {
   return (
-    <div>
-      <h1>Winc Lil'Playlist</h1>
+    <div >
+      <h1 className="header">Winc Lil'Playlist</h1>
       <InputFields />
       <Container />
     </div>

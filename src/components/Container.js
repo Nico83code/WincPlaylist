@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Song from "./Song";
+import "./components.css";
 
 function Container() {
   const apiUrl = "https://playlist-84d33.firebaseio.com/playlist.json";
@@ -19,7 +20,7 @@ function Container() {
         rating: result[key].rating,
         title: result[key].title,
       }));
-      console.log("song", song);
+      // console.log("song", song);
       setSongData(song);
       // return song;
     } catch (error) {
@@ -27,16 +28,30 @@ function Container() {
     }
   };
 
-  useEffect(() => {
-    getData();
+  useEffect((event) => {
+    getData(event);
   }, []);
 
   if (!songData) return "loading";
 
-  return (
-    <div>
-      <h1>container</h1>
+  const baseUrl = "https://playlist-84d33.firebaseio.com";
 
+  const removeData = async (hashId) => {
+    try {
+      const apiUrl = `${baseUrl}/playlist/${hashId}.json`;
+      let response = await fetch(apiUrl, { method: "DELETE" });
+      // const result = await response.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleDelete = (event) => {
+    removeData(event);
+  };
+
+  return (
+    <div className="app">
       <div>
         <table>
           <tbody>
@@ -51,12 +66,14 @@ function Container() {
 
         {songData
           ? songData.map((song) => (
-              <Song
+              <Song 
                 key={song.id}
+                id={song.id}
                 title={song.title}
                 artist={song.artist}
                 genre={song.genre}
                 rating={song.rating}
+                handleDelete={handleDelete}
               />
             ))
           : null}

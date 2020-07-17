@@ -1,12 +1,3 @@
 .active{
   font-weight: bold;
 }
-
-.wrapper{
-  float:left;
-  width:100%;
-  text-align:center;
-}
-.button{
-  display:inline-block;
-}

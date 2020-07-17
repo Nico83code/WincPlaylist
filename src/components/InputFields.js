@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./components.css";
 
 function InputFields() {
   const [song, setSong] = useState("");
@@ -50,37 +51,40 @@ function InputFields() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        placeholder="Song"
-        type="text"
-        value={song}
-        onChange={onChangeSong}
-      />
-      <input
-        placeholder="Artist"
-        type="text"
-        value={artist}
-        onChange={onChangeArtist}
-      />
-      <select onChange={onChangeGenre}>
-        <option value="selectgenre">select genre</option>
-        <option value="Jazz">Jazz</option>
-        <option value="R&B">R&B</option>
-        <option value="Rock">Rock</option>
-      </select>
+    <div className="app">
+      <form onSubmit={handleSubmit}>
+        <input
+        className="app"
+          placeholder="Song"
+          type="text"
+          value={song}
+          onChange={onChangeSong}
+        />
+        <input
+          placeholder="Artist"
+          type="text"
+          value={artist}
+          onChange={onChangeArtist}
+        />
+        <select onChange={onChangeGenre}>
+          <option value="selectgenre">select genre</option>
+          <option value="Jazz">Jazz</option>
+          <option value="R&B">R&B</option>
+          <option value="Rock">Rock</option>
+        </select>
 
-      <select onChange={onChangeRating}>
-        <option value="selectrating">select rating</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
+        <select onChange={onChangeRating}>
+          <option value="selectrating">select rating</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
 
-      <input type="submit" value="Add Song" />
-    </form>
+        <input type="submit" value="Add Song" />
+      </form>
+    </div>
   );
 }
 export default InputFields;
