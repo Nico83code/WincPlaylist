@@ -54,7 +54,7 @@ function InputFields() {
     <div className="app">
       <form onSubmit={handleSubmit}>
         <input
-        className="app"
+          className="app"
           placeholder="Song"
           type="text"
           value={song}

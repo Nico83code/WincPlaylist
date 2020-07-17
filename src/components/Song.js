@@ -3,11 +3,11 @@ import "./components.css";
 
 function Song(props) {
   return (
-    <div className="list-item">
+    <div className="">
       <table>
         <tbody>
           <tr>
-            <td>{props.title}</td>
+            <td >{props.title}</td>
             <td>{props.artist}</td>
             <td>{props.genre}</td>
             <td>{props.rating}</td>

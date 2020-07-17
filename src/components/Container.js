@@ -40,7 +40,7 @@ function Container() {
     try {
       const apiUrl = `${baseUrl}/playlist/${hashId}.json`;
       let response = await fetch(apiUrl, { method: "DELETE" });
-      // const result = await response.json();
+      const result = await response.json();
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +51,7 @@ function Container() {
   };
 
   return (
-    <div className="app">
+    <div>
       <div>
         <table>
           <tbody>
@@ -60,13 +60,14 @@ function Container() {
               <th>Artist</th>
               <th>Genre</th>
               <th>Rating</th>
+              <th></th>
             </tr>
           </tbody>
         </table>
 
         {songData
           ? songData.map((song) => (
-              <Song 
+              <Song
                 key={song.id}
                 id={song.id}
                 title={song.title}
