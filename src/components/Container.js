@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Song from "./Song";
 
-function Container(props) {
-  const baseUrl = "https://playlist-84d33.firebaseio.com/";
+function Container() {
+  const apiUrl = "https://playlist-84d33.firebaseio.com/playlist.json";
+  const [songData, setSongData] = useState();
 
   const getData = async () => {
     try {
-      const apiUrl = `${baseUrl}/playlist.json`;
       let response = await fetch(apiUrl, {
         method: "GET",
       });
@@ -16,19 +17,50 @@ function Container(props) {
         artist: result[key].artist,
         genre: result[key].genre,
         rating: result[key].rating,
-        song: result[key].song,
+        title: result[key].title,
       }));
-      return song;
+      console.log("song", song);
+      setSongData(song);
+      // return song;
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log(getData());
+  useEffect(() => {
+    getData();
+  }, []);
+
+  if (!songData) return "loading";
 
   return (
     <div>
       <h1>container</h1>
+
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>Song</th>
+              <th>Artist</th>
+              <th>Genre</th>
+              <th>Rating</th>
+            </tr>
+          </tbody>
+        </table>
+
+        {songData
+          ? songData.map((song) => (
+              <Song
+                key={song.id}
+                title={song.title}
+                artist={song.artist}
+                genre={song.genre}
+                rating={song.rating}
+              />
+            ))
+          : null}
+      </div>
     </div>
   );
 }
