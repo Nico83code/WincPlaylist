@@ -12,7 +12,7 @@ function Song(props) {
             <td>{props.genre}</td>
             <td>{props.rating}</td>
             <td>
-              <button onClick={(event) => props.handleDelete(props.id)}>
+              <button onClick={(id) => props.handleDelete(props.id)}>
                 delete
               </button>
             </td>

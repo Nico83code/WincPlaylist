@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./components.css";
 
-function InputFields() {
+function InputFields(props) {
   const [song, setSong] = useState("");
   const [artist, setArtist] = useState("");
   const [genre, setGenre] = useState("");
@@ -28,33 +28,32 @@ function InputFields() {
   };
 
   const handleSubmit = (event) => {
-    console.log("sumbited");
-    postData();
+    postData(event);
   };
 
   const onChangeSong = (event) => {
     setSong(event.target.value);
-    console.log("change", event.target.value);
+   
   };
   const onChangeArtist = (event) => {
     setArtist(event.target.value);
-    console.log("change", event.target.value);
+   
   };
   const onChangeGenre = (event) => {
     setGenre(event.target.value);
-    console.log("change", event.target.value);
+    
   };
 
   const onChangeRating = (event) => {
     setRating(event.target.value);
-    console.log("change", event.target.value);
+    
   };
 
   return (
     <div className="app">
       <form onSubmit={handleSubmit}>
+
         <input
-          className="app"
           placeholder="Song"
           type="text"
           value={song}

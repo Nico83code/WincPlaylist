@@ -16,6 +16,9 @@ input,
 select {
   margin-right: 100px;
 }
+label {
+  margin-right: 5px;
+}
 
 td {
   width: 20%;
@@ -57,7 +60,7 @@ th {
 
 .sortingbtn {
   position: fixed;
-  top: 180px;
+  top: 190px;
   left: 50px;
   text-align: left;
 }
