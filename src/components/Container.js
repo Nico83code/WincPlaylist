@@ -21,8 +21,7 @@ function Container() {
         rating: result[key].rating,
         title: result[key].title,
       }));
-      // console.log(typeof song);
-      // console.log("song", song);
+
       setSongData(song);
       // return song;
     } catch (error) {
@@ -65,11 +64,16 @@ function Container() {
   if (sorting === "Z-A") {
     songData.sort((a, b) => (b.title > a.title ? 1 : -1));
   }
+  if (sorting === "1-5") {
+    songData.sort((a, b) => (a.rating > b.rating ? 1 : -1));
+  }
+
+  if (sorting === "5-1") {
+    songData.sort((a, b) => (b.rating > a.rating ? 1 : -1));
+  }
 
   if (sorting === "Rock") {
-    songData.filter((genre) => {
-      return genre.genre.includes("Rock");
-    });
+    songData.filter((song) => song.genre === "Rock");
   }
 
   return (
@@ -78,10 +82,11 @@ function Container() {
         <div className="sortingbtn">
           <label>filter</label>
           <select onChange={onChangeSort}>
-            <label>filter</label>
             <option value="sorting">select</option>
             <option value="A-Z">A-Z</option>
             <option value="Z-A">Z-A</option>
+            <option value="1-5">rating 1-5</option>
+            <option value="5-1">rating 5-1</option>
             <option value="Rock">Rock</option>
             <option value="R&B">R&B</option>
           </select>

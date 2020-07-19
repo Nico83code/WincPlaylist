@@ -33,26 +33,21 @@ function InputFields(props) {
 
   const onChangeSong = (event) => {
     setSong(event.target.value);
-   
   };
   const onChangeArtist = (event) => {
     setArtist(event.target.value);
-   
   };
   const onChangeGenre = (event) => {
     setGenre(event.target.value);
-    
   };
 
   const onChangeRating = (event) => {
     setRating(event.target.value);
-    
   };
 
   return (
     <div className="app">
       <form onSubmit={handleSubmit}>
-
         <input
           placeholder="Song"
           type="text"
@@ -70,6 +65,11 @@ function InputFields(props) {
           <option value="Jazz">Jazz</option>
           <option value="R&B">R&B</option>
           <option value="Rock">Rock</option>
+          <option value="Rock">Pop</option>
+          <option value="Rock">Hip-Hop</option>
+          <option value="Rock">Soul</option>
+          <option value="Rock">Country</option>
+          <option value="Rock">Metal</option>
         </select>
 
         <select onChange={onChangeRating}>
