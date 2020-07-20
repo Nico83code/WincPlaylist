@@ -5,7 +5,7 @@ import "./components.css";
 function Container() {
   const apiUrl = "https://playlist-84d33.firebaseio.com/playlist.json";
   const [songData, setSongData] = useState([]);
-  const [sorting, setSorting] = useState("select");
+  const [sorting, setSorting] = useState("All");
 
   const getData = async () => {
     try {
@@ -28,6 +28,8 @@ function Container() {
       console.log(error);
     }
   };
+
+  // console.log(songData);
 
   useEffect((event) => {
     getData(event);
@@ -54,27 +56,26 @@ function Container() {
   };
 
   const onChangeSort = (event) => {
-    console.log("User changed the value", event.target.value);
+    // console.log("User changed the value", event.target.value);
     setSorting(event.target.value);
   };
-  if (sorting === "A-Z") {
-    songData.sort((a, b) => (a.title > b.title ? 1 : -1));
-  }
 
-  if (sorting === "Z-A") {
-    songData.sort((a, b) => (b.title > a.title ? 1 : -1));
-  }
-  if (sorting === "1-5") {
-    songData.sort((a, b) => (a.rating > b.rating ? 1 : -1));
-  }
-
-  if (sorting === "5-1") {
-    songData.sort((a, b) => (b.rating > a.rating ? 1 : -1));
-  }
-
-  if (sorting === "Rock") {
-    songData.filter((song) => song.genre === "Rock");
-  }
+  const newArray =
+    sorting === "all"
+      ? songData
+      : sorting === "Rock"
+      ? songData.filter((song) => song.genre === "Rock")
+      : sorting === "R&B"
+      ? songData.filter((song) => song.genre === "R&B")
+      : sorting === "A-Z"
+      ? songData.sort((a, b) => (a.title > b.title ? 1 : -1))
+      : sorting === "Z-A"
+      ? songData.sort((a, b) => (b.title > a.title ? 1 : -1))
+      : sorting === "1-5"
+      ? songData.sort((a, b) => (a.rating > b.rating ? 1 : -1))
+      : sorting === "5-1"
+      ? songData.sort((a, b) => (b.rating > a.rating ? 1 : -1))
+      : songData;
 
   return (
     <div>
@@ -82,7 +83,7 @@ function Container() {
         <div className="sortingbtn">
           <label>filter</label>
           <select onChange={onChangeSort}>
-            <option value="sorting">select</option>
+            <option value="all">All</option>
             <option value="A-Z">A-Z</option>
             <option value="Z-A">Z-A</option>
             <option value="1-5">rating 1-5</option>
@@ -103,8 +104,8 @@ function Container() {
           </tbody>
         </table>
 
-        {songData
-          ? songData.map((song) => (
+        {newArray
+          ? newArray.map((song) => (
               <Song
                 key={song.id}
                 id={song.id}

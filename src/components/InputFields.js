@@ -26,7 +26,7 @@ function InputFields(props) {
       console.log(error);
     }
   };
-
+ 
   const handleSubmit = (event) => {
     postData(event);
   };
